@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Event to Calendar</string>
+    <string name="action_settings">Settings</string>
+    <string name="event_add_success">Evento adicionado com Sucesso :D</string>
+    <string name="event_not_add">Não foi possível adicionar o evento ao Calendário.</string>
+    <string name="title_event">Sunny Day :D</string>
+    <string name="description_event">Não esqueça de levar o seu protetor solar :D</string>
+    <string name="content_description">Adicione aqui o seu evento.</string>
+</resources>
