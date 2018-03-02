@@ -57,29 +57,13 @@ public class CalendarUtil{
         values.put(CalendarContract.Reminders.MINUTES, 10);
         cr.insert(REMINDERS_URI, values);
 
-        /*Intent intent = new Intent(Intent.ACTION_INSERT);
-        intent.setType("vnd.android.cursor.item/event");
-
-        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(2018, 2, 27, 1, 0, 0);
-        Log.d(TAG, "Data Inicio => " + sdf.format(beginTime.getTime()));
-
-        intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime);
-        intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, beginTime);
-        intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
-        intent.putExtra(CalendarContract.Events.TITLE, R.string.title_event);
-        intent.putExtra(CalendarContract.Events.DESCRIPTION, R.string.description_event);
-        intent.putExtra(CalendarContract.Events.EVENT_LOCATION, timeZone.getID());
-
-        return intent;*/
-
     }
 
     private String getCalendarUriBase(boolean eventUri){
         Uri calendarUri = null;
         try {
             calendarUri = (eventUri) ? Uri.parse("content://com.android.calendar/") :
-                                       Uri.parse("content://com.android.calendar/calendars");
+                                       Uri.parse("content://com.android.calendar/events");
         } catch (Exception e){
             e.printStackTrace();
         }
