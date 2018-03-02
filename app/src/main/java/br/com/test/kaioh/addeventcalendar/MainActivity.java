@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     if (permissionManager.userHasPermission(MainActivity.this)) {
-                        /*Intent i = null;
-                        startActivity(i);*/
                         calendarUtil.addEventToCalendar();
 
                         Snackbar.make(view, R.string.event_add_success, Snackbar.LENGTH_LONG)
