@@ -47,7 +47,7 @@ public class CalendarUtil{
         Log.d(TAG, "Data Fim => " + sdf.format(cal.getTime()));
         values.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.getID());
         values.put(CalendarContract.Events.HAS_ALARM, 1);
-
+        Log.d(TAG, values.toString() + "\n");
         Uri event = cr.insert(EVENTS_URI, values);
 
         Uri REMINDERS_URI = Uri.parse(getCalendarUriBase(true) + "reminders");
@@ -59,15 +59,21 @@ public class CalendarUtil{
 
     }
 
-    private String getCalendarUriBase(boolean eventUri){
-        Uri calendarUri = null;
+    private String getCalendarUriBase(boolean eventUri) {
+        Uri calendarURI = null;
         try {
-            calendarUri = (eventUri) ? Uri.parse("content://com.android.calendar/") :
-                                       Uri.parse("content://com.android.calendar/events");
-        } catch (Exception e){
+            if (android.os.Build.VERSION.SDK_INT <= 7) {
+                calendarURI = (eventUri) ? Uri.parse("content://calendar/") :
+                        Uri.parse("content://calendar/calendars");
+            } else {
+                calendarURI = (eventUri) ? Uri.parse("content://com.android.calendar/") : Uri
+                        .parse("content://com.android.calendar/calendars");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return calendarUri.toString();
+
+        return calendarURI.toString();
     }
 
     private String onTransformResToString(int resource){
